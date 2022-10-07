@@ -1,13 +1,11 @@
-from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import GroceriesSerializer
+from .serializers import FoodSerializer
 
-from .models import Groceries
+from .models import Food
 
-# Create your views here.
 @api_view(['GET'])
-def groceriesList(request):
-    groceries = Groceries.objects.all()
-    serializer = GroceriesSerializer(groceries, many=True)
+def foodList(request):
+    food = Food.objects.all()
+    serializer = FoodSerializer(food, many=True)
     return Response(serializer.data)
