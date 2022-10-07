@@ -37,10 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'meal.apps.MealConfig',
     'acc.apps.AccConfig',
     
+    'rest_framework',
 ]
 
 AUTH_USER_MODEL = "acc.User"
