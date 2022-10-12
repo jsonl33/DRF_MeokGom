@@ -1,4 +1,5 @@
 import openpyxl
+import json
 
 
 class food_data():
@@ -108,3 +109,4 @@ class food_data():
         food_dict['카페인(㎎)'] = row[97].value
         food_dict['성분표출처'] = row[98].value
         food_dict['발행기관'] = row[99].value
+        food_object = json.dumps(food_dict, ensure_ascii=False)

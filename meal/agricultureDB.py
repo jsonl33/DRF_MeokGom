@@ -1,9 +1,10 @@
 import openpyxl
+import json
 
 
 class agriculture_data():
     wb = openpyxl.load_workbook('staticfiles/통합_식품영양성분DB_농축산물_20221011.xlsx')
-    sheet1 = wb['Sheet1']
+    sheet1 = wb['data']
     rows = sheet1['A2':'EP3271']
 
     for row in rows:
@@ -154,6 +155,7 @@ class agriculture_data():
         agriculture_dict['폐기율(%)'] = row[143].value
         agriculture_dict['출처'] = row[144].value
         agriculture_dict['발행기관'] = row[145].value
+        agriculture_object = json.dumps(agriculture_dict, ensure_ascii=False)
         
         
         

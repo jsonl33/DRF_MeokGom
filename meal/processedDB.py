@@ -1,9 +1,10 @@
 import openpyxl
+import json
 
 
 class processed_data():
     wb = openpyxl.load_workbook('staticfiles/통합_식품영양성분DB_가공식품_20221011.xlsx')
-    sheet1 = wb['Sheet1']
+    sheet1 = wb['20220927']
     rows = sheet1['A2':'CL77770']
 
     for row in rows:
@@ -98,3 +99,4 @@ class processed_data():
         processed_dict['카페인(㎎)'] = row[87].value
         processed_dict['성분표출처'] = row[88].value
         processed_dict['발행기관'] = row[89].value
+        processed_object = json.dumps(processed_dict, ensure_ascii=False)

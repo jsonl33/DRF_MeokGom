@@ -1,9 +1,10 @@
 import openpyxl
+import json
 
 
 class fish_data():
     wb = openpyxl.load_workbook('staticfiles/통합_식품영양성분DB_수산물_20221011.xlsx')
-    sheet1 = wb['Sheet1']
+    sheet1 = wb['20220920']
     rows = sheet1['A2':'CE1366']
 
     for row in rows:
@@ -91,4 +92,6 @@ class fish_data():
         fish_dict['산가용성물질(%)'] = row[80].value
         fish_dict['성분표출처'] = row[81].value
         fish_dict['발행기관'] = row[82].value
+        fish_object = json.dumps(fish_dict, ensure_ascii=False)
+    
 
