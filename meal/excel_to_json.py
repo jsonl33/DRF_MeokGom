@@ -58,6 +58,8 @@ class fisheries_data():
         
         
         
+        
+        
 # class agriculture_data():
 #     excel_file = 'staticfiles/통합_식품영양성분DB_농축산물_20221011.xlsx'
 #     json_file = 'staticfiles/agriculture_data.json'
