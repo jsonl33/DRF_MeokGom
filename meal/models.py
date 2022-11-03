@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext as _
      
-class FoodDB(models.Model):
+class FoodData(models.Model):
     SAMPLE_ID = models.CharField(_("SAMPLE_ID"), max_length=100)
     식품코드 = models.CharField(_("식품코드"), max_length=100)
     DB군 = models.CharField(_("DB군"), max_length=100)
@@ -14,8 +14,8 @@ class FoodDB(models.Model):
     식품상세분류 = models.CharField(_("식품상세분류"), max_length=100)
     _1회제공량 = models.IntegerField(_("1회제공량"))
     내용량_단위 = models.CharField(_("내용량_단위"), max_length=100)
-    총내용량 = models.FloatField(_("총내용량(g)"))
-    총내용량 = models.FloatField(_("총내용량(mL)"))
+    총내용량_g = models.FloatField(_("총내용량(g)"))
+    총내용량_mL = models.FloatField(_("총내용량(mL)"))
     에너지 = models.FloatField(_("에너지(㎉)"))
     수분 = models.FloatField(_("수분(g)"))
     단백질 = models.FloatField(_("단백질(g)"))
@@ -102,6 +102,8 @@ class FoodDB(models.Model):
     성분표출처 = models.CharField(_("성분표출처"), max_length=100)
     발행기관 = models.CharField(_("발행기관"), max_length=100)
     
+    def __str__(self):
+        return self.식품명
 
 
      

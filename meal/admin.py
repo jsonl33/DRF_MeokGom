@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import FoodDB
+from .models import FoodData
 
-admin.site.register(FoodDB)
+admin.site.register(FoodData)
 

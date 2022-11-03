@@ -1,14 +1,8 @@
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from .serializers import FoodSerializer
+from django.shortcuts import render
+from .models import FoodData
 
-from .models import FoodDB
-
-@api_view(['GET'])
-def foodList(request):
-    food = FoodDB.objects.all()
-    serializer = FoodSerializer(food, many=True)
-    return Response(serializer.data)
+def index(request):
+    return render(request, 'meal/index.html')
 
 
 
