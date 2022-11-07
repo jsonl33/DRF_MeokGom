@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'meal.apps.MealConfig',
     'acc.apps.AccConfig',
-    
-    'rest_framework',
 ]
 
 AUTH_USER_MODEL = "acc.User"

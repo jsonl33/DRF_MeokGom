@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block con %}
+<form name="calculate">
+    <div class="input-wh">
+        <label for="height">신장</label>
+        <input type="number" name="bmi_height" placeholder={{ height }}>
+        <label for="height">체중</label>
+        <input type="number" name="bmi_weight" placeholder={{ weight }}>
+        <button onclock="calculate()">측정</button>
+    </div>
+    <div>
+        <textarea name="bmi_result" rows="3" cols="50" disabled>{{ result }}</textarea>
+    </div>
+</form>
+{% endblock %}
