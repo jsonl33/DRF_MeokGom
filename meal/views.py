@@ -23,13 +23,22 @@ def bmi(request):
 
 def food_Database(request):
     page = request.GET.get("page", 1) 
+    
     food_records = FoodData.objects.all()
     divide_pages = Paginator(food_records, 10)
-    page_format = divide_pages.get_page(page)
+    food_objects = divide_pages.get_page(page)
+    
     context = {
-        "foodlist": page_format
+        "foodlist": food_objects
     }
     return render(request, 'meal/database.html', context)
 
 
-
+def detail(request, mpk):
+    food_records = FoodData.objects.get(id=mpk)
+    food_values = FoodData.objects.filter(id=mpk).values()
+    context = {
+        "food_values" : food_values,
+        "food_records" : food_records
+    }
+    return render(request, "meal/detail.html", context)

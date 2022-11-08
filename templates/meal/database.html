@@ -2,12 +2,37 @@
 
 {% block con %}
 {% load mathfilters %}
+    <button>식약처DB</button>
+    <button>나의 DB</button>
+    <table class="table table-hover mt-4">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">식품코드</th>
+                <th scope="col">식품명</th>
+                <th scope="col">식품상세분류</th>
+                <th scope="col">총내용량(g)</th>
+                <th scope="col">에너지(㎉)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in foodlist %}
+                <tr>
+                    <th scope="row">{{ i.식품코드 }}</th>
+                    <td><a class="sub" href="{% url 'meal:detail' i.id %}">{{ i.식품명 }}</a></td>
+                    <td>{{ i.식품상세분류 }}</td>
+                    <td>{{ i.총내용량_g }}</td>
+                    <td>{{ i.에너지 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
     {% if foodlist.has_previous %}
-        <a href="{% url 'meal:database' %}?page=1"><button>HOME</button></a>
-        <a href="{% url 'meal:database' %}?page={{ foodlist.previous_page_number }}"><button> < </button></a>
+        <a href="{% url 'meal:database' %}?page=1"><button>처음</button></a>
+        <a href="{% url 'meal:database' %}?page={{ foodlist.previous_page_number }}"><button> 이전 </button></a>
     {% else %}
-        <button disabled>HOME</button>
-        <button disabled> < </button>
+        <button disabled>처음</button>
+        <button disabled> 이전 </button>
     {% endif %}
 
 
@@ -18,10 +43,22 @@
     {% endfor %}
 
     {% if foodlist.has_next %}
-        <a href="{% url 'meal:database' %}?page={{ foodlist.next_page_number}}"><button> > </button></a>
-        <a href="{% url 'meal:database' %}?page={{ foodlist.paginator.num_pages }}"><button> END </button></a>
+        <a href="{% url 'meal:database' %}?page={{ foodlist.next_page_number}}"><button> 다음 </button></a>
+        <a href="{% url 'meal:database' %}?page={{ foodlist.paginator.num_pages }}"><button> 마지막 </button></a>
     {% else %}
-        <button disabled> > </button>
-        <button disabled> END </button>
+        <button disabled> 다음 </button>
+        <button disabled> 마지막 </button>
     {% endif %}
+
+    <style>
+        .sub {
+            text-decoration: none;
+            color:black;
+            font-weight: bold;
+        }
+        .sub:hover{
+            color:red;
+        }
+    </style>
 {% endblock con %}
+

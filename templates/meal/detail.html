@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block con %}
+    <h1>{{ food_records.식품명 }}</h1>
+    {% for instance in food_values %}
+        <ul>
+            {% for key, value in instance.items %}
+                <li><b>{{ key }}:</b> {{ value }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+{% endblock con %}
+
