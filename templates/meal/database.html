@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block con %}
+{% load mathfilters %}
+    {% if foodlist.has_previous %}
+        <a href="{% url 'meal:database' %}?page=1"><button>HOME</button></a>
+        <a href="{% url 'meal:database' %}?page={{ foodlist.previous_page_number }}"><button> < </button></a>
+    {% else %}
+        <button disabled>HOME</button>
+        <button disabled> < </button>
+    {% endif %}
+
+
+    {% for i in foodlist.paginator.page_range %}
+        {% if i >= foodlist.number|sub:1|intdiv:10|mul:10|add:1 and foodlist.number|sub:1|intdiv:10|add:1|mul:10 >= i %}
+            <a href="{% url 'meal:database' %}?page={{i}}"><button>{% if foodlist.number == i %}★{% endif %}{{i}}</button></a>
+        {% endif %}
+    {% endfor %}
+
+    {% if foodlist.has_next %}
+        <a href="{% url 'meal:database' %}?page={{ foodlist.next_page_number}}"><button> > </button></a>
+        <a href="{% url 'meal:database' %}?page={{ foodlist.paginator.num_pages }}"><button> END </button></a>
+    {% else %}
+        <button disabled> > </button>
+        <button disabled> END </button>
+    {% endif %}
+{% endblock con %}
